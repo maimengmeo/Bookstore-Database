@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Add Book Inventory</title>
+</head>
+<body>
+	<h1>Gnosis Bookstore</h1>
+	<h2>Enter Book's Information</h2>
+	
+	<form action="#" th:action="@{/addBook}" method="POST" th:object="${book}">
+		<p>ISBN:
+			<input type="number" th:field="*{isbn}" required>
+		</p>
+		<p>Title:
+			<input type="text" th:field="*{title}" required>
+		</p>
+		<p>Author:
+			<input type="text" th:field="*{author}" required>
+		</p>
+		<p>Category:
+			<select th:field="*{category}" required>
+				<option th:each="c : *{categories}"
+						th:value="${c}" th:text="${c}"></option>
+			</select>
+		</p>
+		<p>Price:
+			<input type="number" th:field="*{price}" value="" min="0" step=".01" required>
+		</p>
+		<p>Quantity:
+			<input type="number" th:field="*{quantity}" value="" min="0" required>
+		</p>
+		<br>
+		<p>
+			<input type="submit">
+		</p>
+	</form>
+</body>
+</html>
